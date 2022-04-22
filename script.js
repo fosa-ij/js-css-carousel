@@ -23,19 +23,6 @@ buttons.forEach(button => {
 // loop through the list changing the src attribute on them by looping through the images gotten from the server.
 
 
-
-// let n = [];
-// let m = [];
-
-// n.forEach((num1, index) => {
-//   const num2 = m[index];
-//   console.log(num1, num2);
-// });
-
-
-
-
-
 document.querySelector('#button').addEventListener('click', getCocktail = () => {
   const drink = document.querySelector('#drink').value
   let drinkCocktail = drink.replaceAll(' ', '%20')
@@ -56,12 +43,27 @@ document.querySelector('#button').addEventListener('click', getCocktail = () => 
         // let src = document.createAttribute('src').value = data.drinks[i].strDrinkThumb
         // img.setAttributeNode(src)
         li.appendChild(img)
+
+          let h2 = document.createElement('h2')
+          h2.innerText = data.drinks[i].strDrink
+          h2.className = 'fntS'
+            let h3One = document.createElement('h3')
+            h3One.innerText = data.drinks[i].strAlcoholic
+              let h3Two = document.createElement('h3')
+              h3Two.innerText = `Served in a ${data.drinks[i].strGlass}`
+              h3Two.className = 'fntS'
+                let p = document.createElement('p')
+                p.innerText = data.drinks[i].strInstructions
+                p.style.fontSize = '16px'
+        li.appendChild(h2)
+        li.appendChild(h3One)
+        li.appendChild(h3Two)
+        li.appendChild(p)
+
         document.querySelector('ul').appendChild(li)
-      
       })
    })
    .catch(err => {
        console.log(`error ${err}`)
    });
-      //  document.querySelector('button').classList.toggle('hidden')
 })
